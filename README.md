@@ -36,3 +36,20 @@ Add "djangoredisslowlog" to your `INSTALLED_APPS` setting (in settings.py) like 
     
     3        7762    514.646ms 2015-05-28 23:25:03+00:00 (2m ago)            Complexity info: N:517336
         SMEMBERS friends:bart_simpson
+
+## Optional Django settings:
+
+- `REDISSLOWLOG_BUFFER_COLUMN_CHARS`
+  - number of column chars to buffer, defaults to 5
+- `REDISSLOWLOG_SORT_BY_DURATION`
+  - whether to sort by longest duration first - if `False`, it will sort chronologically, defaults to `True`
+- `REDISSLOWLOG_REDIS`
+  - returns a function instance that when executed returns your redis.Redis instance
+  - Example settings.py:
+
+                def get_redis():
+                    import redis
+                    return redis.from_url(settings.REDIS_URL)
+                REDISSLOWLOG_REDIS = get_redis
+
+  - (defaults to just `import redis` if not set)
