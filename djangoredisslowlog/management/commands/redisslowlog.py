@@ -34,7 +34,7 @@ class Command(BaseCommand):
         for i in range(len(col_lengths)):
             col_lengths[i] += BUFFER_COLUMN_CHARS
         # Then prepare the format string
-        self.format_str = "{: >%s} {: >%s} {: >%s} {: >%s}" % col_lengths
+        self.format_str = "{: >%s} {: >%s} {: >%s} {: >%s}" % tuple(col_lengths)
 
     def _print_row(self, row, i='#', command=None):
         print "%s\t%s" % (i, self.format_str.format(*row))
