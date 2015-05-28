@@ -4,9 +4,12 @@ import datetime
 from django.conf import settings
 from django.core.management.base import BaseCommand
 import pytz
-import redis
 
-
+if hasattr(settings, 'REDISSLOWLOG_REDIS'):
+    redis_func = settings.REDISSLOWLOG_REDIS
+    redis = redis_func()
+else:
+    import redis
 BUFFER_COLUMN_CHARS = getattr(settings, 'REDISSLOWLOG_BUFFER_COLUMN_CHARS', 5)
 SORT_BY_DURATION = getattr(settings, 'REDISSLOWLOG_SORT_BY_DURATION', True)
 
