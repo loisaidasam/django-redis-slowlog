@@ -27,12 +27,12 @@ Add "djangoredisslowlog" to your `INSTALLED_APPS` setting (in settings.py) like 
 ## Usage:
 
     $ ./manage.py redisslowlog
-#          id     duration      start_time                           complexity
-1        7761   1368.070ms 2015-05-28 23:25:16+00:00 (2m ago)
-    KEYS celery*
-
-2        7760   1335.585ms 2015-05-28 23:25:26+00:00 (2m ago)
-    KEYS foo:bar:*
-
-3        7762    514.646ms 2015-05-28 23:25:03+00:00 (2m ago)            Complexity info: N:517336
-    SMEMBERS friends:bart_simpson
+    #          id     duration      start_time                           complexity
+    1        7761   1368.070ms 2015-05-28 23:25:16+00:00 (2m ago)
+        KEYS celery*
+    
+    2        7760   1335.585ms 2015-05-28 23:25:26+00:00 (2m ago)
+        KEYS foo:bar:*
+    
+    3        7762    514.646ms 2015-05-28 23:25:03+00:00 (2m ago)            Complexity info: N:517336
+        SMEMBERS friends:bart_simpson
