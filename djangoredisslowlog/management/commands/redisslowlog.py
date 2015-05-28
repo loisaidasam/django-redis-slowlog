@@ -7,14 +7,8 @@ import pytz
 import redis
 
 
-if settings.REDISSLOWLOG_BUFFER_COLUMN_CHARS is None:
-    BUFFER_COLUMN_CHARS = 5
-else:
-    BUFFER_COLUMN_CHARS = settings.REDISSLOWLOG_BUFFER_COLUMN_CHARS
-if settings.REDISSLOWLOG_SORT_BY_DURATION is None:
-    SORT_BY_DURATION = True
-else:
-    SORT_BY_DURATION = settings.REDISSLOWLOG_SORT_BY_DURATION
+BUFFER_COLUMN_CHARS = getattr(settings, 'REDISSLOWLOG_BUFFER_COLUMN_CHARS', 5)
+SORT_BY_DURATION = getattr(settings, 'REDISSLOWLOG_SORT_BY_DURATION', True)
 
 
 class Command(BaseCommand):
